@@ -1,9 +1,9 @@
 # SherlocksHome - Get all Bastards Version!
 This Black Python Script is not a game! It is a powerfull tool to chapter traffic between clients and evil .onion sites
-I use it for How to kill the Onion! Be carefull!
+I use it for How to kill the Onion? Be carefull!
 To listen with sensors and identify connections accessing an evil .onion site, we use for this example: Python's Scapy library. 
 Scapy allows us to capture, dissect and forge network packets. :smile: 
-Here's an example code that captures packets that communicate with a specified .onion address, 
+This example code that captures packets that communicate with a specified .onion address, 
 records their timestamps and the source IP address (if can get it), and exports them to a CSV file:
 
 ```python
@@ -59,7 +59,7 @@ with open('onion_communication.csv', mode='w', newline='') as file:
 
 When you run this code, it will capture all packets that communicate with the specified address, and write them to a CSV file named "onion_communication.csv". The CSV file will include the timestamp, source IP, destination IP and protocol of each captured packet.
 
-## REALY REALY BIG BIG BIG BIG BIG WARNING, 
+## REALY REALY BIG BIG BIG BIG BIG WARNING !
 This Black.Python Script is not a toy! If you chapter criminals and dont know what you do, they will come and kill your family in front of you than you will die!
 
 Note that capturing packets may raise legal and ethical concerns, and it is your responsibility to ensure that your actions comply with the law and ethical standards.
