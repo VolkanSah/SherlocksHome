@@ -1,5 +1,5 @@
 # SherlocksHome - Get all Bastards Version!
-This Black Python Script is not a game! It is a powerfull tool to chapter traffic betwien clients and evil .onion sites
+This Black Python Script is not a game! It is a powerfull tool to chapter traffic between clients and evil .onion sites
 I use it for How to kill the Onion! Be carefull!
 To listen with sensors and identify connections accessing an evil .onion site, we use for this example: Python's Scapy library. 
 Scapy allows us to capture, dissect and forge network packets. :smile: 
