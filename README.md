@@ -21,10 +21,10 @@ import csv
 import time
 
 onion_address = "INSERT .ONION ADDRESS HERE" # Replace with the .onion address you want to monitor
-# Create a list to store captured packets
+# Create a list to store packets
 packet_list = []
 
-# Define a function to capture packets and append them to packet_list
+# Function to capture packets and append them to packet_list
 def packet_capture(packet):
     if packet.haslayer(IP):
         if packet[IP].dst == onion_address or packet[IP].src == onion_address:
@@ -37,17 +37,22 @@ def packet_capture(packet):
 # Start packet capture
 sniff(prn=packet_capture)
 
+# Sherlock did his job!
+###################################################################
+# Removed! to avoid stupid people # but here some tipps!
+# - start sniff /scan destination NMAP-BP can help ;)
+# execute /handel logic or mechanics for each destination
+# Pro-Tipp: I love to let an readme.txt on the Target Desktop!
+# sorry! This Sensor is powerfull enought you didn`t need Nemises!
+# you can give the results to the next police station!
+###################################################################
+
 # Write packet data to CSV file we ned it
 with open('onion_communication.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['Timestamp', 'Source IP', 'Destination IP', 'Protocol'])
     for row in packet_list:
         writer.writerow(row)
-# Removed!#
-# execute each connection in random logic with hidden_tunnels 
-
-# This Sensor is powerfull enought you didnt need Nemises Version!
-# you can give the results to the next police station!
 ```
 
 When you run this code, it will capture all packets that communicate with the specified .onion address, and write them to a CSV file named "onion_communication.csv". The CSV file will include the timestamp, source IP, destination IP and protocol of each captured packet.
