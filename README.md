@@ -1,4 +1,4 @@
-# SherlocksHome - Get Bastards Version!
+# SherlocksHome - Get all Bastards Version!
 This Black Python Script is not a game! It is a powerfull tool to chapter traffic betwien clients and evil .onion sites
 I use it for How to kill the Onion! Be carefull!
 To listen with sensors and identify connections accessing an evil .onion site, we use for this example: Python's Scapy library. 
