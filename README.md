@@ -8,22 +8,22 @@ records their timestamps and the source IP address (if can get it), and exports 
 
 ```python
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                              # #                                                                                                     #
-#   ,---.  ,--.                   ,--.             ,--.           ,--.  ,--.                          #   
+#   ,---.  ,--.                   ,--.             ,--.           ,--.  ,--.     by Nemesis Mr.Chess  #   
 #  '   .-' |  ,---.  ,---. ,--.--.|  | ,---.  ,---.|  |,-.  ,---. |  '--'  | ,---. ,--,--,--. ,---.   #
 #  `.  `-. |  .-.  || .-. :|  .--'|  || .-. || .--'|     / (  .-' |  .--.  || .-. ||        || .-. :  #
 #  .-'    ||  | |  |\   --.|  |   |  |' '-' '\ `--.|  \  \ .-'  `)|  |  |  |' '-' '|  |  |  |\   --.  #
 #  `-----' `--' `--' `----'`--'   `--' `---'  `---'`--'`--'`----' `--'  `--' `---' `--`--`--' `----'  #
-#   Will get all bastards!                                                                     #                            
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                                                                                  
-
+#   Will get all bastards!                                                                            #                            
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 # This tool is intended for educational and ethical hacking purposes only. Note that capturing packets# 
+# may raise legal and ethical concerns, and it is your responsibility to ensure that your actions 
+# comply with the law and ethical standards                                                              
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 from scapy.all import *
 import csv
 import time
-
 onion_address = "INSERT .ONION ADDRESS HERE" # Replace with the .onion address you want to monitor
 # Create a list to store packets
 packet_list = []
-
 # Function to capture packets and append them to packet_list
 def packet_capture(packet):
     if packet.haslayer(IP):
@@ -34,10 +34,8 @@ def packet_capture(packet):
             protocol = packet[IP].proto
             packet_list.aappend([timestamp, src_ip, dst_ip, protocol])
             # more logic here if needed!
-
 # Start packet captureing
 sniff(prn=packet_capture)
-
 # Sherlock did his job, till yet!
 ###################################################################
 # Removed! to avoid stupid people # but here some tipps!
@@ -48,7 +46,6 @@ sniff(prn=packet_capture)
 # sorry! This Sensor is powerfull enought you didn`t need Nemises!
 # you can give the results to the next police station!
 ###################################################################
-
 # Write packet data to CSV file
 with open('onion_communication.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
