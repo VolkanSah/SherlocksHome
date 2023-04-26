@@ -14,10 +14,8 @@ records their timestamps and the source IP address (if can get it), and exports 
 #  .-'    ||  | |  |\   --.|  |   |  |' '-' '\ `--.|  \  \ .-'  `)|  |  |  |' '-' '|  |  |  |\   --.  #
 #  `-----' `--' `--' `----'`--'   `--' `---'  `---'`--'`--'`----' `--'  `--' `---' `--`--`--' `----'  #
 #   Will get all bastards!                                                                            #                            
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 # This tool is intended for educational and ethical hacking purposes only. Note that capturing packets# 
-# may raise legal and ethical concerns, and it is your responsibility to ensure that your actions 
-# comply with the law and ethical standards                                                              
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 # # # #        This tool is intended for educational and ethical hacking purposes only.         # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
 from scapy.all import *
 import csv
 import time
