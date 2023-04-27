@@ -1,10 +1,5 @@
 # SherlocksHome - Get all Bastards Version!
-This Black Python Script is not a game! It is a powerfull tool to chapter traffic between clients and evil .onion sites
-I use it for How to kill the Onion? Be carefull!
-To listen with sensors and identify connections accessing an evil .onion site, we use for this example: Python's Scapy library. 
-Scapy allows us to capture, dissect and forge network packets. :smile: 
-This example code that captures packets that communicate with a specified .onion address, 
-records their timestamps and the source IP address (if can get it), and exports them to a CSV file:
+Dieses Black Python Script ist kein Spiel! Es ist ein mächtiges Tool, um den Datenverkehr zwischen Clients und bösartigen .onion-Sites zu überwachen. Ich benutze es für How to kill the Onion? Sei vorsichtig! Um mit Sensoren zu lauschen und Verbindungen zu identifizieren, die auf eine bösartige .onion-Site zugreifen, verwenden wir für dieses Beispiel: Pythons Scapy-Bibliothek. Mit Scapy können wir Netzwerkpakete erfassen, sezieren und fälschen. 😄 Dieser Beispielcode, der Pakete erfasst, die mit einer bestimmten .onion-Adresse kommunizieren, ihre Zeitstempel und die Quell-IP-Adresse (falls verfügbar) aufzeichnet und sie in eine CSV-Datei exportiert:
 
 ```python
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 
