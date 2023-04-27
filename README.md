@@ -13,7 +13,7 @@ Dieses Black Python Script ist kein Spiel! Es ist ein mächtiges Tool, um den Da
 from scapy.all import *
 import csv
 import time
-onion_address = "INSERT .ONION ADDRESS HERE" # Replace with the .onion address you want to monitor
+onion_address = "INSERT .ONION ADDRESS HERE" # .onion address you want to monitor
 # Create a list to store packets
 packet_list = []
 # Function to capture packets and append them to packet_list
