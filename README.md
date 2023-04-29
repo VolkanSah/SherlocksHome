@@ -94,7 +94,7 @@ This will start capturing TCP packets and pass them to the check_destination fun
 
 Note that this script only captures packets on the local machine (127.0.0.1). Use e.g SoCat to ReUseAdress
 
-This example uses Scapy to sniff network packets and filter for TCP traffic. It then checks whether the packet is using the SOCKS5 protocol by inspecting the destination port. If it is, it extracts the destination IP address from the packet header and forks the traffic to two local ports (9051 and 9052) that can be accessed via Tor. The script uses the sniff function from Scapy to capture packets and a lambda function to pass the packets to the fork_to_tor function if they are using the SOCKS5 protocol.
+This examples uses Scapy to sniff network packets and filter for TCP traffic. It then checks whether the packet is using the SOCKS5 protocol by inspecting the destination port. If it is, it extracts the destination IP address from the packet header and forks the traffic to two local ports (9051 and 9052) that can be accessed via Tor. The script uses the sniff function from Scapy to capture packets and a lambda function to pass the packets to the fork_to_tor function if they are using the SOCKS5 protocol.
 
 ```pyhton
 from scapy.all import *
@@ -129,7 +129,6 @@ To track all incoming traffic to bad links in a domain list, you can modify the 
 ```python
 
 from scapy.all import *
-
 bad_domains = set(line.strip() for line in open('domainlist.txt'))
 
 def is_bad_domain(ip):
@@ -160,7 +159,7 @@ sniff(filter="tcp", prn=handle_packet)
 - Please note that capturing packets may raise legal and ethical concerns, and it is your responsibility to ensure that your actions comply with the law and ethical standards. It is recommended that you seek legal and ethical guidance before using this technics.
 
 ## Disclaimer
-This script is for educational purposes only and should not be used for any illegal, unethical, or malicious activities. Always ensure that you have proper authorization before conducting any security testing or penetration testing on any website or system. The creator of this script is not responsible for any misuse or damages caused by using this script.
+This scriptexamples is for educational purposes only and should not be used for any illegal, unethical, or malicious activities. Always ensure that you have proper authorization before conducting any security testing or penetration testing on any website or system. The creator of this script is not responsible for any misuse or damages caused by using this script.
 
 ## issues
 Issues to this script are not accepted as it is intended for educational purposes only and not for production use.
