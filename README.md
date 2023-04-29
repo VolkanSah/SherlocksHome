@@ -1,5 +1,8 @@
 # SherlocksHome - Get all Bastards Version!
-Dieses Black Python Script ist kein Spiel! Es ist ein mächtiges Tool, um den Datenverkehr zwischen Clients und bösartigen .onion-Sites zu überwachen. Ich benutze es für How to kill the Onion? Sei vorsichtig! Um mit Sensoren zu lauschen und Verbindungen zu identifizieren, die auf eine bösartige .onion-Site zugreifen, verwenden wir für dieses Beispiel: Pythons Scapy-Bibliothek. Mit Scapy können wir Netzwerkpakete erfassen, sezieren und fälschen. 😄 Dieser Beispielcode, der Pakete erfasst, die mit einer bestimmten .onion-Adresse kommunizieren, ihre Zeitstempel und die Quell-IP-Adresse (falls verfügbar) aufzeichnet und sie in eine CSV-Datei exportiert:
+This Black Python script is not a game! It is a powerful tool to monitor the traffic between clients and malicious .onion sites. We use a code like this to take down bad actors both in our company and in our personal lives. Be careful! For this example, we use Python's Scapy library to listen with sensors and identify connections accessing a malicious .onion site. With Scapy, we can capture, dissect, and forge network packets. 😄 This sample code captures packets communicating with a specific .onion address, records their timestamps and source IP address (if available), and exports them to a CSV file.
+
+Note: You must complete a pre-step before using this script! We will not explain it to prevent script kiddies and other malicious individuals from using it. If you choose to use it anyway, you will harm yourself and potentially face legal consequences from law enforcement
+
 
 ```python
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 
@@ -27,19 +30,19 @@ def packet_capture(packet):
             packet_list.aappend([timestamp, src_ip, dst_ip, protocol])
             # more logic here if needed!
 # Start packet captureing
+# eg. sniff(prn=packet_capture, your needs)
 while some_condition:
-    sniff(prn=packet_capture, filter=f"host {onion_address}", count=10)
-# sniff(prn=packet_capture)
-# Sherlock did his job, till yet!
-###################################################################
-# Removed! to avoid stupid people # but here some tipps!
-# - start sniff /scan destination NMAP-BP can help ;)
-# execute /handel logic or mechanics for each 
-# destination an Extractor with a kiss of JADE can help 
-# Pro-Tipp: I love to let an readme.txt on the Target Desktop!
-# sorry! This Sensor is powerfull enought you didn`t need Nemises!
-# you can give the results to the next police station!
-###################################################################
+sniff(prn=packet_capture, filter=f"host {onion_address}", count=10)
+# Sherlock did his job, till yet! 
+# Rest of the code here, e.g., save to CSV file, sleep, update the condition, etc.
+###################################################################################
+# Content removed for security reasons - this code is for education use only
+# Here are some tips:
+# Start by sniffing/scanning the destination - tools like NMAP-BP can help
+# Use an extractor with JADE to handle logic or mechanics for each destination
+# Sorry, this sensor is powerful enough that you don't need any additional tools
+# If necessary, you can share the results with law enforcement
+####################################################################################
 # Write packet data to CSV file
 with open('onion_communication.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
@@ -48,9 +51,9 @@ with open('onion_communication.csv', mode='w', newline='') as file:
         writer.writerow(row)
 ```
 
-When you run this code, it will capture all packets that communicate with the specified address, and write them to a CSV file named "onion_communication.csv". The CSV file will include the timestamp, source IP, destination IP and protocol of each captured packet.
+When you run this code, it will capture all packets that communicate with the specified address, and write them to a CSV file named "onion_communication.csv". The CSV file will include the timestamp, source IP, destination IP, and protocol of each captured packet.
 
-## REALY REALY BIG BIG BIG BIG BIG WARNING !
-This Black.Python Script is not a toy! If you chapter criminals and dont know what you do, they will come and kill your family in front of you than you will die!
+WARNING: READ CAREFULLY!
+This Black Python script is a powerful security tool intended for use by security professionals and developers only. It is not intended for malicious purposes, and I cannot be held responsible for any misuse of this code. If you use this tool for illegal or unethical purposes, you alone will be held responsible for any consequences that may arise, including legal and ethical issues.
 
-Note that capturing packets may raise legal and ethical concerns, and it is your responsibility to ensure that your actions comply with the law and ethical standards.
+Please note that capturing packets may raise legal and ethical concerns, and it is your responsibility to ensure that your actions comply with the law and ethical standards. It is recommended that you seek legal and ethical guidance before using this tool.
