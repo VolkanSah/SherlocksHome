@@ -48,8 +48,8 @@ sniff(prn=packet_capture, filter=f"host {onion_address}", count=10)
 # Content with logic removed for security reasons - this code is for education use only #
 # Here are some tips:                                                                   #
 # Start by sniffing/scanning the destination - tools like NMAP-BP can help              #
-# Use an extractor with JADE to handle logic or mechanics for each destination          #
-# Sorry, this sensor is powerful enough that you don't need any additional tools        #
+# Use an extractor with a kiss of JADE to handle logic or mechanics for each destination#
+# Sorry, this sensor is powerful enough that you don't need any additional tools for edu#
 # If necessary, you can share the results with law enforcement                          #
 #########################################################################################
 # Write packet data to CSV file
