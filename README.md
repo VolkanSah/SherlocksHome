@@ -73,6 +73,9 @@ Only smetimes! Let me explain you:
 
 This function will check for IP packets and then match the destination IP address to the ones in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
 
+Thats [ 127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083 ] The code for my head... this guy use hidden tunnels over tor! to fork something? YES!
+
+
 ### Example 1
 ```python
 def check_destination(pkt):
