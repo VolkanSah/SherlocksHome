@@ -69,7 +69,7 @@ with open('onion_communication.csv', mode='w', newline='') as file:
 When you run this code, it will capture all packets that communicate with the specified address, and write them to a CSV file named "onion_communication.csv". The CSV file will include the timestamp, source IP, destination IP, and protocol of each captured packet.
 
 ## WTF ??? ARE THE AUTOR INSANE????
-Ometimes! Let me explain you:
+Only smetimes! Let me explain you:
 
 This function will check for IP packets and then match the destination IP address to the ones in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
 
