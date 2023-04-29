@@ -69,9 +69,9 @@ This script is for educational purposes only and should not be used for any ille
 Issues to this script are not accepted as it is intended for educational purposes only and not for production use.
 
 ## Credits
-[VolkanSah on Github](https://github.com/volkansah)
-[Developer Site](https://volkansah.github.io)
-[Become a 'Sponsor'](https://github.com/sponsors/volkansah)
+- [VolkanSah on Github](https://github.com/volkansah)
+- [Developer Site](https://volkansah.github.io)
+- [Become a 'Sponsor'](https://github.com/sponsors/volkansah)
 
 ## License
 This script is released by [VolkanSah](https://github.com/volkansah) under the MIT License 
