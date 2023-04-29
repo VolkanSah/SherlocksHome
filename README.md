@@ -1,4 +1,4 @@
-# SherlocksHome - Get all Bastards Version!
+# SherlocksHome - Get all Bastards!
 This Black Python script is not a game! It is a powerful tool to monitor the traffic between clients and malicious .onion sites. We use a code like this to take down bad actors both in our company and in our personal lives. Be careful! For this example, we use Python's Scapy library to listen with sensors and identify connections accessing a malicious .onion site. With Scapy, we can capture, dissect, and forge network packets. 😄 This sample code captures packets communicating with a specific .onion address, records their timestamps and source IP address (if available), and exports them to a CSV file.
 
 Note: You must complete a pre-step before using this script! We will not explain it to prevent script kiddies and other malicious individuals from using it. If you choose to use it anyway, you will harm yourself and potentially face legal consequences from law enforcement
