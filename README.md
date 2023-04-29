@@ -87,26 +87,79 @@ def check_destination(pkt):
             
             
 ```
-      Use Scapy's sniff function to capture network traffic and pass it to the check_destination function:
+- Use Scapy's sniff function to capture network traffic and pass it to the check_destination function:
 ```python
 sniff(prn=check_destination, filter='tcp')
 ```
 This will start capturing TCP packets and pass them to the check_destination function for analysis.
+- Run the script and monitor the output for potential intruders.
 
-      Run the script and monitor the output for potential intruders.
+Note that this script only captures packets on the local machine (127.0.0.1). Use e.g SoCat to ReUseAdress
 
+This example uses Scapy to sniff network packets and filter for TCP traffic. It then checks whether the packet is using the SOCKS5 protocol by inspecting the destination port. If it is, it extracts the destination IP address from the packet header and forks the traffic to two local ports (9051 and 9052) that can be accessed via Tor. The script uses the sniff function from Scapy to capture packets and a lambda function to pass the packets to the fork_to_tor function if they are using the SOCKS5 protocol.
 
+```pyhton
+from scapy.all import *
+import socket
 
+def is_tor(pkt):
+    if pkt.haslayer(TCP):
+        tcp = pkt.getlayer(TCP)
+        if tcp.dport == 9050:
+            return True
+    return False
 
+def get_dest_ip(pkt):
+    ip = pkt.getlayer(IP)
+    return ip.dst
 
+def fork_to_tor(pkt, sport, dport):
+    pkt[IP].dst = '127.0.0.1'
+    pkt[TCP].sport = sport
+    pkt[TCP].dport = dport
+    send(pkt)
 
+def main():
+    sniff(filter="tcp", prn=lambda x: fork_to_tor(x, 9051, 9052) if is_tor(x) else None)
 
+if __name__ == '__main__':
+    main()
+```
 
+To track all incoming traffic to bad links in a domain list, you can modify the script I provided earlier to include a check for the destination IP against the list of bad domains. Here's an example modification to the script:
 
+```python
 
+from scapy.all import *
 
+bad_domains = set(line.strip() for line in open('domainlist.txt'))
 
-Please note that capturing packets may raise legal and ethical concerns, and it is your responsibility to ensure that your actions comply with the law and ethical standards. It is recommended that you seek legal and ethical guidance before using this technics.
+def is_bad_domain(ip):
+    # Extract the domain from the IP address
+    domain = str(ip).split('.')[-2] + '.' + str(ip).split('.')[-1]
+    return domain in bad_domains
+
+def handle_packet(packet):
+    # Check if the packet is a SOCKS5 packet
+    if packet.haslayer(Raw) and b'\x05\x01\x00' in packet[Raw].load:
+        # Extract the destination IP address
+        ip = packet[IP].dst
+        # Check if the destination IP is a bad domain
+        if is_bad_domain(ip):
+            print("Bad domain found: {}".format(ip))
+        # Fork the packet to local ports
+        # (insert fork code here)
+
+# Start capturing packets on the network interface
+sniff(filter="tcp", prn=handle_packet)
+```
+- This modification reads in a file named domainlist.txt containing a list of bad domains, and creates a set of those domains. The is_bad_domain() function checks if a given IP address belongs to one of the bad domains, by extracting the domain from the IP address and checking if it's in the set of bad domains.
+
+- Inside the handle_packet() function, after identifying a SOCKS5 packet and extracting the destination IP, we call is_bad_domain() to check if the IP belongs to a bad domain. If it does, we print a message indicating the bad domain was found.
+
+- Note that this is a very basic example, and in a real-world scenario you may need to implement additional checks and measures to handle different types of traffic and avoid false positives.
+
+- Please note that capturing packets may raise legal and ethical concerns, and it is your responsibility to ensure that your actions comply with the law and ethical standards. It is recommended that you seek legal and ethical guidance before using this technics.
 
 ## Disclaimer
 This script is for educational purposes only and should not be used for any illegal, unethical, or malicious activities. Always ensure that you have proper authorization before conducting any security testing or penetration testing on any website or system. The creator of this script is not responsible for any misuse or damages caused by using this script.
