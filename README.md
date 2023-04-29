@@ -95,7 +95,7 @@ Note that this script only captures packets on the local machine (127.0.0.1). Us
 
 This examples uses Scapy to sniff network packets and filter for TCP traffic. It then checks whether the packet is using the SOCKS5 protocol by inspecting the destination port. If it is, it extracts the destination IP address from the packet header and forks the traffic to two local ports (9051 and 9052) that can be accessed via Tor. The script uses the sniff function from Scapy to capture packets and a lambda function to pass the packets to the fork_to_tor function if they are using the SOCKS5 protocol.
 
-```pyhton
+```python
 from scapy.all import *
 import socket
 
