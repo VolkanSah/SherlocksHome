@@ -27,7 +27,9 @@ def packet_capture(packet):
             packet_list.aappend([timestamp, src_ip, dst_ip, protocol])
             # more logic here if needed!
 # Start packet captureing
-sniff(prn=packet_capture)
+while some_condition:
+    sniff(prn=packet_capture, filter=f"host {onion_address}", count=10)
+# sniff(prn=packet_capture)
 # Sherlock did his job, till yet!
 ###################################################################
 # Removed! to avoid stupid people # but here some tipps!
