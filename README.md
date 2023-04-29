@@ -73,7 +73,7 @@ Only smetimes! Let me explain you:
 
 This function will check for IP packets and then match the destination IP address to the ones in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
 
-## Example:
+### Example 1
 ```python
 def check_destination(pkt):
     if IP in pkt:
@@ -95,6 +95,7 @@ Note that this script only captures packets on the local machine (127.0.0.1). Us
 
 This examples uses Scapy to sniff network packets and filter for TCP traffic. It then checks whether the packet is using the SOCKS5 protocol by inspecting the destination port. If it is, it extracts the destination IP address from the packet header and forks the traffic to two local ports (9051 and 9052) that can be accessed via Tor. The script uses the sniff function from Scapy to capture packets and a lambda function to pass the packets to the fork_to_tor function if they are using the SOCKS5 protocol.
 
+### Example 2
 ```python
 from scapy.all import *
 import socket
@@ -125,6 +126,7 @@ if __name__ == '__main__':
 
 To track all incoming traffic to bad links in a domain list, you can modify the script I provided earlier to include a check for the destination IP against the list of bad domains. Here's an example modification to the script:
 
+### Example 3
 ```python
 
 from scapy.all import *
