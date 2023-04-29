@@ -10,7 +10,7 @@ Be careful! For this example, we use Python's Scapy library to listen with senso
 This Black Python script example is intended for use by security professionals and developers only. It is not intended for malicious purposes, and I cannot be held responsible for any misuse of this code. If you use this tool for illegal or unethical purposes, you alone will be held responsible for any consequences that may arise, including legal and ethical issues.
 
 ## Note
-Please note that there is a pre-steps you must complete before using this script. However, we will not disclose it to prevent malicious individuals from using this tool. If you choose to use it anyway, you may harm yourself and potentially face legal consequences from law enforcement.
+Please note that there is a pre-steps you must complete before using this script. However, I will not disclose it to prevent malicious individuals from using this tool. If you choose to use it anyway, you may harm yourself and potentially face legal consequences from law enforcement.
 
 
 ```python
