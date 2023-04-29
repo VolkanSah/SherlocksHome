@@ -70,6 +70,42 @@ with open('onion_communication.csv', mode='w', newline='') as file:
 
 When you run this code, it will capture all packets that communicate with the specified address, and write them to a CSV file named "onion_communication.csv". The CSV file will include the timestamp, source IP, destination IP, and protocol of each captured packet.
 
+## WTF ??? ARE THE AUTOR INSANE????
+Let me explain you:
+
+
+This function will check for IP packets and then match the destination IP address to the ones you're interested in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
+
+## Example:
+```python
+def check_destination(pkt):
+    if IP in pkt:
+        ip_src = pkt[IP].src
+        ip_dst = pkt[IP].dst
+        if re.match('127\.0\.0\.1:(8080|8081|8083)', ip_dst):
+            print(f'Potential intruder detected: {ip_src} -> {ip_dst}')
+            
+            
+```
+      Use Scapy's sniff function to capture network traffic and pass it to the check_destination function:
+```python
+sniff(prn=check_destination, filter='tcp')
+```
+This will start capturing TCP packets and pass them to the check_destination function for analysis.
+
+      Run the script and monitor the output for potential intruders.
+
+
+
+
+
+
+
+
+
+
+
+
 Please note that capturing packets may raise legal and ethical concerns, and it is your responsibility to ensure that your actions comply with the law and ethical standards. It is recommended that you seek legal and ethical guidance before using this technics.
 
 ## Disclaimer
