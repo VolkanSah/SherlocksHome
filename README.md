@@ -1,5 +1,6 @@
 # SherlocksHome - Get all Bastards! (EDU)
 ###### RedTeam Script Examples by Volkan Sah - simple codings for 'Offensive Security' (updated 2023)
+![screenshot sherlocks home python script](sherlockshome_edu.png)
 
 This Black Python script is a powerful tool designed to monitor traffic between clients and malicious .onion sites. It is not a game, and it is intended for use by security professionals and developers who know how to handle it safely. We use a code like this to capture bad actors.
 
