@@ -76,9 +76,9 @@ Issues to this script are not accepted as it is intended for educational purpose
 - [Developer Site](https://volkansah.github.io)
 - [Become a 'Sponsor'](https://github.com/sponsors/volkansah)
 
-## usefull links to scapy
-[Scapy Website](https://scapy.net/)
-[Scapy on Github]( https://github.com/secdev/scapy)
-[Scapy Docs](https://scapy.readthedocs.io/en/latest/)
+#### links to scapy
+- [Scapy Website](https://scapy.net/)
+- [Scapy on Github]( https://github.com/secdev/scapy)
+- [Scapy Docs](https://scapy.readthedocs.io/en/latest/)
 ## License
 This script is released by [VolkanSah](https://github.com/volkansah) under the MIT License 
