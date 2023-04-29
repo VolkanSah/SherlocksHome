@@ -2,17 +2,6 @@
 ###### RedTeam Script Examples (EDU) by Volkan Sah - simple codings for 'Offensive Security' (updated 3/2023)
 ![screenshot sherlocks home python script](sherlockshome_edu.png)
 
-```
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 
-#   ,---.  ,--.                   ,--.             ,--.           ,--.  ,--.     by Nemesis Mr.Chess  #   
-#  '   .-' |  ,---.  ,---. ,--.--.|  | ,---.  ,---.|  |,-.  ,---. |  '--'  | ,---. ,--,--,--. ,---.   #
-#  `.  `-. |  .-.  || .-. :|  .--'|  || .-. || .--'|     / (  .-' |  .--.  || .-. ||        || .-. :  #
-#  .-'    ||  | |  |\   --.|  |   |  |' '-' '\ `--.|  \  \ .-'  `)|  |  |  |' '-' '|  |  |  |\   --.  #
-#  `-----' `--' `--' `----'`--'   `--' `---'  `---'`--'`--'`----' `--'  `--' `---' `--`--`--' `----'  #
-#   Will get all bastards!                                                                            #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-```
-
 This Black Python script is a powerful tool designed to monitor traffic between clients and malicious .onion sites. It is not a game, and it is intended for use by security professionals and developers who know how to handle it safely. We use a code like this to capture bad actors.
 
 Be careful! For this example, we use Python's Scapy library to listen with sensors and identify connections accessing a malicious .onion site. With Scapy, we can capture, dissect, and forge network packets. This sample code captures packets communicating with a specific .onion address, records their timestamps and source IP address (if available), and exports them to a CSV file.
@@ -25,6 +14,15 @@ Please note that there is a pre-steps (e.g SoCat) you must complete before using
 
 
 ```python
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 
+#   ,---.  ,--.                   ,--.             ,--.           ,--.  ,--.     by Nemesis Mr.Chess  #   
+#  '   .-' |  ,---.  ,---. ,--.--.|  | ,---.  ,---.|  |,-.  ,---. |  '--'  | ,---. ,--,--,--. ,---.   #
+#  `.  `-. |  .-.  || .-. :|  .--'|  || .-. || .--'|     / (  .-' |  .--.  || .-. ||        || .-. :  #
+#  .-'    ||  | |  |\   --.|  |   |  |' '-' '\ `--.|  \  \ .-'  `)|  |  |  |' '-' '|  |  |  |\   --.  #
+#  `-----' `--' `--' `----'`--'   `--' `---'  `---'`--'`--'`----' `--'  `--' `---' `--`--`--' `----'  #
+#   Will get all bastards!                                                                            #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
                                                
 from scapy.all import *
 import csv
