@@ -25,8 +25,8 @@ Please note that there is a pre-steps you must complete before using this script
 from scapy.all import *
 import csv
 import time
-# import logging
-# logging.getLogger("scapy").setLevel(logging.CRITICAL)
+#import logging
+#logging.getLogger("scapy").setLevel(logging.CRITICAL)
 
 onion_address = "INSERT .ONION ADDRESS HERE" # .onion address you want to monitor
 # Create a list to store packets
