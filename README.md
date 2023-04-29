@@ -2,9 +2,9 @@
 ###### RedTeam Script Examples (EDU) by Volkan Sah - simple codings for 'Offensive Security' (updated 3/2023)
 ![screenshot sherlocks home python script](sherlockshome_edu.png)
 
-This Black Python script is a powerful tool designed to monitor traffic between clients and malicious .onion sites. It is not a game, and it is intended for use by security professionals and developers who know how to handle it safely. We use a code like this to capture bad actors.
+This Black Python script  example is a powerful tool to monitor traffic between clients and malicious .onion sites. It is not a game, and it is intended for use by security professionals and developers who know how to handle it safely.
 
-Be careful! For this example, we use Python's Scapy library to listen with sensors and identify connections accessing a malicious .onion site. With Scapy, we can capture, dissect, and forge network packets. This sample code captures packets communicating with a specific .onion address, records their timestamps and source IP address (if available), and exports them to a CSV file.
+Be careful! For this example, we use Python's Scapy library to listen with sensors and identify connections accessing a malicious .onion site. With Scapy, we can capture, dissect, and forge network packets. 
 
 ## WARNING: READ CAREFULLY!
 This Black Python script example is intended for use by security professionals and developers only. It is not intended for malicious purposes, and I cannot be held responsible for any misuse of this code. If you use this tool for illegal or unethical purposes, you alone will be held responsible for any consequences that may arise, including legal and ethical issues.
@@ -12,7 +12,7 @@ This Black Python script example is intended for use by security professionals a
 ## Note
 Please note that there is a pre-steps (e.g SoCat) you must complete before using this script. However, I will not disclose it to prevent malicious individuals from using this tool. If you choose to use it anyway, you may harm yourself and potentially face legal consequences from law enforcement.
 
-
+- This sample code captures packets communicating with a specific .onion address, records their timestamps and source IP address (if available), and exports them to a CSV file.
 ```python
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 
@@ -69,10 +69,9 @@ with open('onion_communication.csv', mode='w', newline='') as file:
 When you run this code, it will capture all packets that communicate with the specified address, and write them to a CSV file named "onion_communication.csv". The CSV file will include the timestamp, source IP, destination IP, and protocol of each captured packet.
 
 ## WTF ??? ARE THE AUTOR INSANE????
-Let me explain you:
+Ometimes! Let me explain you:
 
-
-This function will check for IP packets and then match the destination IP address to the ones you're interested in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
+This function will check for IP packets and then match the destination IP address to the ones in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
 
 ## Example:
 ```python
