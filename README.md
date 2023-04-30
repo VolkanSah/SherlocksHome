@@ -71,11 +71,10 @@ When you run this code, it will capture all packets that communicate with the sp
 ## WTF ??? ARE THE AUTOR INSANE????
 Only sometimes! Let me explain you:
 
-This function will check for IP packets and then match the destination IP address to the ones in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
-
-
 
 ### Example 1
+This function will check for IP packets and then match the destination IP address to the ones in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
+
 ```python
 def check_destination(pkt):
     if IP in pkt:
@@ -94,10 +93,9 @@ This will start capturing TCP packets and pass them to the check_destination fun
 - Run the script and monitor the output for potential intruders.
 
 Note that this script only captures packets on the local machine (127.0.0.1). Use e.g SoCat to ReUseAdress
-
+### Example 2
 This examples uses Scapy to sniff network packets and filter for TCP traffic. It then checks whether the packet is using the SOCKS5 protocol by inspecting the destination port. If it is, it extracts the destination IP address from the packet header and forks the traffic to two local ports (9051 and 9052) that can be accessed via Tor. The script uses the sniff function from Scapy to capture packets and a lambda function to pass the packets to the fork_to_tor function if they are using the SOCKS5 protocol.
 
-### Example 2
 ```python
 from scapy.all import *
 import socket
@@ -125,10 +123,9 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-
+### Example 3
 If you want to track all incoming traffic to bad links in a domain list, you can modify like below
 
-### Example 3
 ```python
 
 from scapy.all import *
@@ -153,7 +150,7 @@ def handle_packet(packet):
 # Start capturing packets on the network interface
 sniff(filter="tcp", prn=handle_packet)
 ```
-- This modification reads in a file named domainlist.txt containing a list of bad domains, and creates a set of those domains. The is_bad_domain() function checks if a given IP address belongs to one of the bad domains, by extracting the domain from the IP address and checking if it's in the set of bad domains.
+This modification reads in a file named domainlist.txt containing a list of bad domains, and creates a set of those domains. The is_bad_domain() function checks if a given IP address belongs to one of the bad domains, by extracting the domain from the IP address and checking if it's in the set of bad domains.
 
 - Inside the handle_packet() function, after identifying a SOCKS5 packet and extracting the destination IP, we call is_bad_domain() to check if the IP belongs to a bad domain. If it does, we print a message indicating the bad domain was found.
 
