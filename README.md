@@ -127,7 +127,7 @@ if __name__ == '__main__':
     main()
 ```
 
-To track all incoming traffic to bad links in a domain list, you can modify the script I provided earlier to include a check for the destination IP against the list of bad domains. Here's an example modification to the script:
+If you want to track all incoming traffic to bad links in a domain list, you can modify like below
 
 ### Example 3
 ```python
