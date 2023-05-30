@@ -83,6 +83,17 @@ def check_destination(pkt):
         if re.match('127\.0\.0\.1:(8080|8081|8083)', ip_dst):
             print(f'Potential intruder detected: {ip_src} -> {ip_dst}')
             
+ or
+ 
+ def check_destination(pkt):
+    if IP in pkt and TCP in pkt:
+        ip_src = pkt[IP].src
+        ip_dst = pkt[IP].dst
+        dst_port = pkt[TCP].dport
+        if ip_dst == '127.0.0.1' and dst_port in [8080, 8081, 8083]:
+            print(f'Potential intruder detected: {ip_src} -> {ip_dst}:{dst_port}')
+
+            
             
 ```
 - Use Scapy's sniff function to capture network traffic and pass it to the check_destination function:
