@@ -134,9 +134,10 @@ This modification reads a file named **domainlist.txt** containing a list of bad
 ## Disclaimer
 
 This script example is for educational purposes only and should not be used for any illegal, unethical, or malicious activities. Always ensure that you have proper authorization before conducting any security testing or penetration testing on any website or system. The creator of this script is not responsible for any misuse or damages caused by using this script.
-Issues
 
-Issues with this script are not accepted as it is intended for educational purposes only and not for production use.
+
+> [!NOTE]
+> Issues with this script are not accepted as it is intended for educational purposes only and not for production use.
 ## links to scapy
 - [Scapy Website](https://scapy.net/)
 - [Scapy on Github]( https://github.com/secdev/scapy)
