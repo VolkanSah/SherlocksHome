@@ -70,7 +70,7 @@ while True:
 
 
 ## Explanation
-1.Importing Libraries: The script starts by importing necessary libraries from Scapy, as well as CSV, time, and regular expressions (re) modules.
+1. Importing Libraries: The script starts by importing necessary libraries from Scapy, as well as CSV, time, and regular expressions (re) modules.
 2. Setting the Onion Address: Replace "INSERT .ONION ADDRESS HERE" with the .onion address you want to monitor.
 3. Packet Capture Function:
 -- The packet_capture function is defined to capture packets.
