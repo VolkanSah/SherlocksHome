@@ -1,8 +1,8 @@
 # SherlocksHome - Get all Bastards! (EDU)
-###### RedTeam Script Examples (EDU) by Volkan Sah - simple codings for 'Offensive Security' (updated 3/2024)
+###### RedTeam Script Examples (EDU) by Volkan Sah - simple codings for 'Offensive Security' (updated 5/2024)
 ![screenshot sherlocks home python script](sherlockshome_edu.png)
 
-This Black Python script  example is a powerful tool to monitor traffic between clients and malicious .onion sites. It is not a game, and it is intended for use by security professionals and developers who know how to handle it safely.
+This Black Python script example is a powerful tool to monitor traffic between clients and malicious .onion sites. It is not a game, and it is intended for use by security professionals and developers who know how to handle it safely.
 
 Be careful! For this example, we use Python's Scapy library to listen with sensors and identify connections accessing a malicious .onion site. With Scapy, we can capture, dissect, and forge network packets. 
 
@@ -10,9 +10,11 @@ Be careful! For this example, we use Python's Scapy library to listen with senso
 This Black Python script example is intended for use by security professionals and developers only. It is not intended for malicious purposes, and I cannot be held responsible for any misuse of this code. If you use this tool for illegal or unethical purposes, you alone will be held responsible for any consequences that may arise, including legal and ethical issues.
 
 ## Note
-Please note that there is a pre-steps (e.g SoCat) you must complete before using this script. However, I will not disclose it to prevent malicious individuals from using this tool. If you choose to use it anyway, you may harm yourself and potentially face legal consequences from law enforcement.
+Please note that there are pre-steps (e.g., SoCat) you must complete before using this script. However, I will not disclose them to prevent malicious individuals from using this tool. If you choose to use it anyway, you may harm yourself and potentially face legal consequences from law enforcement.
 
-- This sample code captures packets communicating with a specific .onion address, records their timestamps and source IP address (if available), and exports them to a CSV file.
+## Main Code
+This sample code captures packets communicating with a specific .onion address, records their timestamps and source IP address (if available), and exports them to a CSV file.
+
 ```python
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #                                                 
@@ -66,79 +68,37 @@ while True:
 ```
 
 
-When you run this code, it will capture all packets that communicate with the specified address, and write them to a CSV file named "onion_communication.csv". The CSV file will include the timestamp, source IP, destination IP, and protocol of each captured packet.
+## Explanation
+1.Importing Libraries: The script starts by importing necessary libraries from Scapy, as well as CSV, time, and regular expressions (re) modules.
+2. Setting the Onion Address: Replace "INSERT .ONION ADDRESS HERE" with the .onion address you want to monitor.
+3. Packet Capture Function:
+-- The packet_capture function is defined to capture packets.
+-- It checks if the packet has an IP layer.
+-- If the packet’s source or destination matches the specified .onion address, it extracts the timestamp, source IP, destination IP, and protocol.
+-- This information is appended to the packet_list.
 
-## WTF ??? ARE THE AUTOR INSANE????
-Only sometimes! Let me explain you:
+4. Sniffing Packets:
+-- The sniff function from Scapy is used to continuously capture packets.
+-- The packets are filtered to match the specified .onion address and processed by the packet_capture function.
 
+5. Writing to CSV:
+-- Captured packet data is written to a CSV file named onion_communication.csv every time 10 packets are captured.
+-- The CSV file includes columns for Timestamp, Source IP, Destination IP, and Protocol.
 
-### Example 1
-This function will check for IP packets and then match the destination IP address to the ones in (127.0.0.1:8080, 127.0.0.1:8081, and 127.0.0.1:8083). If a match is found, it will print out the source and destination IP addresses.
+6. Checking for Intruders:
+-- The script checks if any captured packets are communicating with specific local ports (127.0.0.1:8080, 127.0.0.1:8081, 127.0.0.1:8083).
+-- If such communication is detected, it prints a message indicating a potential intruder.
 
-```python
-def check_destination(pkt):
-    if IP in pkt:
-        ip_src = pkt[IP].src
-        ip_dst = pkt[IP].dst
-        if re.match('127\.0\.0\.1:(8080|8081|8083)', ip_dst):
-            print(f'Potential intruder detected: {ip_src} -> {ip_dst}')
-            
- or
- 
- def check_destination(pkt):
-    if IP in pkt and TCP in pkt:
-        ip_src = pkt[IP].src
-        ip_dst = pkt[IP].dst
-        dst_port = pkt[TCP].dport
-        if ip_dst == '127.0.0.1' and dst_port in [8080, 8081, 8083]:
-            print(f'Potential intruder detected: {ip_src} -> {ip_dst}:{dst_port}')
+7. Resetting and Delaying:
+-- The packet_list is reset after each batch of 10 packets.
+-- The script waits for 1 minute before capturing the next batch of packets.
 
-            
-            
-```
-- Use Scapy's sniff function to capture network traffic and pass it to the check_destination function:
-```python
-sniff(prn=check_destination, filter='tcp')
-```
-This will start capturing TCP packets and pass them to the check_destination function for analysis.
-- Run the script and monitor the output for potential intruders.
+## other usefull Example : 
+### Monitoring Traffic to Bad Domains
 
-Note that this script only captures packets on the local machine (127.0.0.1). Use e.g SoCat to ReUseAdress
-### Example 2
-This examples uses Scapy to sniff network packets and filter for TCP traffic. It then checks whether the packet is using the SOCKS5 protocol by inspecting the destination port. If it is, it extracts the destination IP address from the packet header and forks the traffic to two local ports (9051 and 9052) that can be accessed via Tor. The script uses the sniff function from Scapy to capture packets and a lambda function to pass the packets to the fork_to_tor function if they are using the SOCKS5 protocol.
+If you want to track all incoming traffic to bad links in a domain list, you can modify the script as follows:
 
 ```python
-from scapy.all import *
-import socket
-
-def is_tor(pkt):
-    if pkt.haslayer(TCP):
-        tcp = pkt.getlayer(TCP)
-        if tcp.dport == 9050:
-            return True
-    return False
-
-def get_dest_ip(pkt):
-    ip = pkt.getlayer(IP)
-    return ip.dst
-
-def fork_to_tor(pkt, sport, dport):
-    pkt[IP].dst = '127.0.0.1'
-    pkt[TCP].sport = sport
-    pkt[TCP].dport = dport
-    send(pkt)
-
-def main():
-    sniff(filter="tcp", prn=lambda x: fork_to_tor(x, 9051, 9052) if is_tor(x) else None)
-
-if __name__ == '__main__':
-    main()
-```
-### Example 3
-If you want to track all incoming traffic to bad links in a domain list, you can modify like below
-
-```python
-
 from scapy.all import *
 bad_domains = set(line.strip() for line in open('domainlist.txt'))
 
@@ -160,21 +120,22 @@ def handle_packet(packet):
 
 # Start capturing packets on the network interface
 sniff(filter="tcp", prn=handle_packet)
+
+
 ```
-This modification reads in a file named domainlist.txt containing a list of bad domains, and creates a set of those domains. The is_bad_domain() function checks if a given IP address belongs to one of the bad domains, by extracting the domain from the IP address and checking if it's in the set of bad domains.
 
-- Inside the handle_packet() function, after identifying a SOCKS5 packet and extracting the destination IP, we call is_bad_domain() to check if the IP belongs to a bad domain. If it does, we print a message indicating the bad domain was found.
+This modification reads a file named **domainlist.txt** containing a list of bad domains, and creates a set of those domains. The is_bad_domain() function checks if a given IP address belongs to one of the bad domains by extracting the domain from the IP address and checking if it's in the set of bad domains.
 
-- Note that this is a very basic example, and in a real-world scenario you may need to implement additional checks and measures to handle different types of traffic and avoid false positives.
+- Inside the handle_packet() function, after identifying a SOCKS5 packet and extracting the destination IP, we call is_bad_domain() to check if the IP belongs to a bad domain. If it does, a message indicating the bad domain was found is printed.
 
-- Please note that capturing packets may raise legal and ethical concerns, and it is your responsibility to ensure that your actions comply with the law and ethical standards. It is recommended that you seek legal and ethical guidance before using this technics.
+**Note that this is a basic example, and in a real-world scenario, additional checks and measures might be necessary to handle different types of traffic and avoid false positives.**
 
 ## Disclaimer
-This scriptexamples is for educational purposes only and should not be used for any illegal, unethical, or malicious activities. Always ensure that you have proper authorization before conducting any security testing or penetration testing on any website or system. The creator of this script is not responsible for any misuse or damages caused by using this script.
 
-## issues
-Issues to this script are not accepted as it is intended for educational purposes only and not for production use.
+This script example is for educational purposes only and should not be used for any illegal, unethical, or malicious activities. Always ensure that you have proper authorization before conducting any security testing or penetration testing on any website or system. The creator of this script is not responsible for any misuse or damages caused by using this script.
+Issues
 
+Issues with this script are not accepted as it is intended for educational purposes only and not for production use.
 ## links to scapy
 - [Scapy Website](https://scapy.net/)
 - [Scapy on Github]( https://github.com/secdev/scapy)
