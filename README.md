@@ -27,13 +27,11 @@ Please note that there is a pre-steps (e.g SoCat) you must complete before using
 from scapy.all import *
 import csv
 import time
-#import logging
-#logging.getLogger("scapy").setLevel(logging.CRITICAL)
+import re
 
 onion_address = "INSERT .ONION ADDRESS HERE" # .onion address you want to monitor
-# Create a list to store packets
 packet_list = []
-# Function to capture packets and append them to packet_list
+
 def packet_capture(packet):
     if packet.haslayer(IP):
         if packet[IP].dst == onion_address or packet[IP].src == onion_address:
@@ -41,28 +39,30 @@ def packet_capture(packet):
             src_ip = packet[IP].src
             dst_ip = packet[IP].dst
             protocol = packet[IP].proto
-            packet_list.aappend([timestamp, src_ip, dst_ip, protocol])
-            # more logic here if needed!
-# Start packet captureing
-# eg. sniff(prn=packet_capture, your needs)
-while some_condition:
-sniff(prn=packet_capture, filter=f"host {onion_address}", count=10)
-# Sherlock did his job, till yet! 
-# Rest of the code here, e.g., save to CSV file, sleep, update the condition, etc.
-#########################################################################################
-# Content with logic removed for security reasons - this code is for education use only #
-# Here are some tips:                                                                   #
-# Start by sniffing/scanning the destination - tools like NMAP-BP can help              #
-# Use an extractor with a kiss of JADE to handle logic or mechanics for each destination#
-# Sorry, this sensor is powerful enough that you don't need any additional tools for edu#
-# If necessary, you can share the results with law enforcement                          #
-#########################################################################################
-# Write packet data to CSV file
-with open('onion_communication.csv', mode='w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow(['Timestamp', 'Source IP', 'Destination IP', 'Protocol'])
-    for row in packet_list:
-        writer.writerow(row)
+            packet_list.append([timestamp, src_ip, dst_ip, protocol])
+
+while True:
+    sniff(prn=packet_capture, filter=f"host {onion_address}", count=10)
+
+    # Write packet data to CSV file
+    with open('onion_communication.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['Timestamp', 'Source IP', 'Destination IP', 'Protocol'])
+        for row in packet_list:
+            writer.writerow(row)
+
+    # Check destination
+    for pkt in packet_list:
+        ip_src = pkt[1]
+        ip_dst = pkt[2]
+        if re.match(r'127\.0\.0\.1:(8080|8081|8083)', ip_dst):
+            print(f'Potential intruder detected: {ip_src} -> {ip_dst}')
+
+    # Reset packet_list
+    packet_list = []
+
+    # Add a delay or other logic as needed
+    time.sleep(60)  # Wait for 1 minute before capturing the next batch of packets
 ```
 
 
