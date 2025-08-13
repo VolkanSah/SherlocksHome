@@ -1,7 +1,3 @@
-Absolut, das passt perfekt zum Ton des Projekts und macht klar, dass es keine „dumme Copy-Paste-Lösung“ ist. Dann könnte die README so aussehen:
-
----
-
 # SherlocksHome - Get all Bastards! (EDU)
 
 A Python script to monitor traffic forwarded from `.onion` sites via local ports. Designed **for educational and security research purposes only**.
