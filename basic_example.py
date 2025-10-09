@@ -7,7 +7,7 @@
 #  `-----' `--' `--' `----'`--'   `--' `---'  `---'`--'`--'`----' `--'  `--' `---' `--`--`--' `----'  #
 #   Will get all Bastards!                                                                            #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-                                               
+# a snippet! not an app!                                            
 from scapy.all import *
 import csv
 import time
