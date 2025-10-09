@@ -1,6 +1,6 @@
 # SherlocksHome - Get all Bastards! (EDU)
 
-A Python script to monitor traffic forwarded from `.onion` sites via local ports. Designed **for educational and security research purposes only**.
+A Python script to monitor traffic forwarded from `.onion` & public sites via local ports. Designed **for educational and security research purposes only**.
 
 > ⚠️ **Warning**
 > This tool is for security professionals and developers. Misuse may lead to legal consequences. Use responsibly.
