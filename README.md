@@ -44,7 +44,7 @@ LOCAL_PORT = 12345
 2. Run the snippet:
 
 ```bash
-python sherlocks_home.py
+python basic_example.py
 ```
 
 3. Review the generated CSV file for timing and connection flow.
