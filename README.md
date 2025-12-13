@@ -1,62 +1,76 @@
 # SherlocksHome (EDU)
 
-A minimal Python snippet for **local traffic observation** when working with forwarded `.onion` or public endpoints.  
-Designed strictly for **educational, debugging, and research scenarios** in controlled environments.
+A minimal Python snippet for observing **locally forwarded TCP traffic**.
+Built for educational, debugging, and research scenarios in **controlled environments only**.
 
-> **Note:**  
-> This is *not* a crawler, scanner, deanonymizer, or monitoring tool for remote systems.  
-> It only inspects traffic that **you locally forward to yourself**.
+This is a snippet, not an application.
+
+> Note
+> This project does not crawl, scan, deanonymize, or monitor remote systems.
+> It only inspects traffic that you explicitly forward to your own local machine.
 
 ---
 
-## Features
+## What It Does
 
-- Capture incoming TCP packets on a chosen local port.  
-- Log timestamp, source/destination IP and ports.  
-- Export results to CSV for further analysis.  
-- Useful for debugging port‑forward setups or inspecting how forwarded traffic behaves.
+* Listens on a configurable local TCP port.
+* Captures basic packet metadata.
+* Records timestamps, source and destination IPs, and ports.
+* Writes results to a CSV file for later inspection.
+
+No payload inspection. No protocol decoding. Metadata only.
+
+---
+
+## Typical Use Cases
+
+* Debugging local port-forward or proxy setups.
+* Verifying that forwarded traffic actually reaches the expected endpoint.
+* Studying TCP connection patterns in a safe lab setup.
+* Teaching fundamentals of packet capture and network metadata.
+* Lightweight validation of service behavior for blue-team exercises.
 
 ---
 
 ## Usage
 
-1. Set the desired local port inside the script.  
-2. Run:
+1. Set the local port in the script:
+
+```python
+LOCAL_PORT = 12345
+```
+
+2. Run the snippet:
 
 ```bash
 python sherlocks_home.py
-````
+```
 
-3. Inspect the generated CSV file for timing and packet‑flow details.
+3. Review the generated CSV file for timing and connection flow.
 
 ---
 
-## Intended Use
+## Scope and Limitations
 
-This snippet is aimed at:
-
-* developers working with forwarded Tor services
-* security researchers analyzing *their own* traffic
-* blue‑teamers validating service behavior
-* students learning about local packet inspection
-
-It is **not** a security tool and provides zero offensive capability.
+* Local traffic only.
+* Requires traffic to be forwarded to the specified port.
+* Not designed for high-volume capture.
+* Not a monitoring or surveillance solution.
 
 ---
 
 ## Disclaimer
 
-This project is for **educational use only**.
-Use it exclusively on systems and traffic you own or are authorized to monitor.
+This project is provided for educational purposes only.
+Use it exclusively on systems, networks, and traffic you own or are explicitly authorized to inspect.
 The author assumes no responsibility for misuse.
 
 ---
 
 ## License
 
-MIT License — see the `LICENSE` file.
+MIT License. See the LICENSE file for details.
 
 ---
 
-© [Volkan Sah](https://github.com/volkansah)
-
+© Volkan Sah
